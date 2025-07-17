@@ -26,6 +26,9 @@
       <li>Status: Not Completed</li>
       {% endif %}
     </ul>
+    <label for="progress">進捗度（0～100％）:</label>
+    <input type="range" id="progress" name="progress" min="0" max="100" value="0" oninput="document.getElementById('progressValue').innerText = this.value">
+    <span id="progressValue">0</span> % 
 
     <div>
       <a href="{% url 'index' %}">Top</a>
