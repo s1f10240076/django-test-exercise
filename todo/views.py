@@ -50,6 +50,7 @@ def detail(request, task_id):
     }
     return render(request, "todo/detail.html", context)
 
+
 def detail_jp(request, task_id):
     try:
         task = Task.objects.get(pk=task_id)
@@ -106,6 +107,16 @@ def close(request, task_id):
     return redirect(index)
 
 
+def close_jp(request, task_id):
+    try:
+        task = Task.objects.get(pk=task_id)
+    except Task.DoesNotExist:
+        raise Http404("Task does not exist")
+    task.completed = True
+    task.save()
+    return redirect("index_jp")
+
+
 def delete(request, task_id):
     try:
         task = Task.objects.get(pk=task_id)
@@ -113,3 +124,12 @@ def delete(request, task_id):
         raise Http404("Task does not exist")
     task.delete()
     return redirect(index)
+
+
+def delete_jp(request, task_id):
+    try:
+        task = Task.objects.get(pk=task_id)
+    except Task.DoesNotExist:
+        raise Http404("Task does not exist")
+    task.delete()
+    return redirect("index_jp")
