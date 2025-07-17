@@ -3,31 +3,31 @@
 <html lang="ja">
 
   <head>
-    <title>To Do Application</title>
+    <title>やることリストアプリ</title>
     <meta charset="UTF-8">
     <meta name="author" content="INIAD">
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
   </head>
 
   <body>
-    <h1>Edit task</h1>
+    <h1>タスクを編集</h1>
     <div class="language-buttons">
       <button type="button" onclick="location.href='{% url 'update_jp' task.id %}'">日本語</button>
       <button type="button" onclick="location.href='{% url 'update' task.id %}'">English</button>
     </div>
-    <p>You can edit tasks from the following form.</p>
-    <form action="{% url 'update' task.id%}" method="post">
+    <p>以下のフォームからタスクを編集することができます</p>
+    <form action="{% url 'update_jp' task.id %}" method="post">
       {% csrf_token %}
       <div>
-        <label for="titleInput">Title</label><br>
+        <label for="titleInput">タイトル</label><br>
         <input id="titleInput" name="title" type="text" placeholder="Input title" value="{{ task.title }}">
       </div>
       <div>
-        <label for="dueInput">Due at:</label><br>
+        <label for="dueInput">締切</label><br>
         <input id="dueInput" name="due_at" type="datetime-local" value="{{ task.due_at |date:"Y-m-d H:i" }}">
       </div>
       <div>
-        <button type="submit">Submit</button>
+        <button type="submit">タスクを編集</button>
       </div>
     </form>
     <br>
