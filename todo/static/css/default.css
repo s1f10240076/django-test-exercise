@@ -87,7 +87,11 @@ ul li {
 }
 
 div a {
-  margin-right: 10px;
+  display: inline-block;
+  margin: 10px;
+  text-decoration: none;
+  color: #007BFF;
+}
 }
 
 div a:last-child {
