@@ -25,6 +25,7 @@ urlpatterns = [
     path("jp/", todo_views.index_jp, name="index_jp"),
     path("<int:task_id>/update_jp", todo_views.update_jp, name="update_jp"),
     path("<int:task_id>/", todo_views.detail, name="detail"),
+    path("<int:task_id>/jp", todo_views.detail_jp, name="detail_jp"),
     path("<int:task_id>/update/", todo_views.update, name="update"),
     path("<int:task_id>/close", todo_views.close, name="close"),
     path("<int:task_id>/delete", todo_views.delete, name="delete_task"),

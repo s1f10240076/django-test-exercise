@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <title>やることリストアプリ</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="INIAD">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+  </head>
+
+  <body>
+    <h1>{{ task.title }}</h1>
+    <div class="language-buttons">
+      <button type="button" onclick="location.href='{% url 'detail_jp' task.id %}'">日本語</button>
+      <button type="button" onclick="location.href='{% url 'detail' task.id %}'">English</button>
+    </div>
+    <ul>
+      <li>作成された時刻： {{ task.posted_at }}</li>
+      {% if task.due_at %}
+      <li>締切： {{ task.due_at }}</li>
+      {% endif %}
+      {% if task.completed %}
+      <li>ステータス：完了</li>
+      {% else %}
+      <li>ステータス：未完了</li>
+      {% endif %}
+    </ul>
+
+    <div>
+      <a href="{% url 'index_jp' %}">トップ</a>
+        <a href="{% url 'delete_task' task.id %}">削除</a>
+      <a href="{% url 'update_jp' task.id %}">編集</a>
+      <a href="{% url 'close' task.id %}">クローズ</a>
+    </div>
+  </body>
+
+</html>

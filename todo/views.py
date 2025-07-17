@@ -50,6 +50,17 @@ def detail(request, task_id):
     }
     return render(request, "todo/detail.html", context)
 
+def detail_jp(request, task_id):
+    try:
+        task = Task.objects.get(pk=task_id)
+    except Task.DoesNotExist:
+        raise Http404("Task does not exist")
+
+    context = {
+        "task": task,
+    }
+    return render(request, "todo/detail_jp.html", context)
+
 
 def update(request, task_id):
     try:
