@@ -19,7 +19,16 @@
       <li>Status: Completed</li>
       {% else %}
       <li>Status: Not Completed</li>
-      {% endif %}
+      <li>
+        あと
+        {% if task.days_until_due > 0 %}
+            {{ task.days_until_due }}日
+        {% elif task.days_until_due == 0 %}
+            本日が締切日です
+        {% else %}
+            締切を過ぎています
+        {% endif %}
+      </li>
     </ul>
 
     <div>
