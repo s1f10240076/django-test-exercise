@@ -19,17 +19,11 @@
       <li>Status: Completed</li>
       {% else %}
       <li>Status: Not Completed</li>
-      <li>
-        あと
-        {% if task.days_until_due > 0 %}
-            {{ task.days_until_due }}日
-        {% elif task.days_until_due == 0 %}
-            本日が締切日です
-        {% else %}
-            締切を過ぎています
-        {% endif %}
-      </li>
+      {% endif %}
     </ul>
+    <label for="progress">進捗度（0～100％）:</label>
+    <input type="range" id="progress" name="progress" min="0" max="100" value="0" oninput="document.getElementById('progressValue').innerText = this.value">
+    <span id="progressValue">0</span> % 
 
     <div>
       <a href="{% url 'index' %}">Top</a>
