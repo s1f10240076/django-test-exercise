@@ -6,10 +6,15 @@
     <title>To Do Application</title>
     <meta charset="UTF-8">
     <meta name="author" content="INIAD">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
   </head>
 
   <body>
     <h1>{{ task.title }}</h1>
+    <div class="language-buttons">
+      <button type="button" onclick="location.href='{% url 'detail_jp' task.id %}'">日本語</button>
+      <button type="button" onclick="location.href='{% url 'detail' task.id %}'">English</button>
+    </div>
     <ul>
       <li>Posted at: {{ task.posted_at }}</li>
       {% if task.due_at %}
