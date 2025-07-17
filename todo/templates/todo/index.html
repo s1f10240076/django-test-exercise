@@ -46,6 +46,7 @@
         <li>Status: Not Completed</li>
         {% endif %}
       </ul>
+      <a href="{% url 'delete_task' task.id %}">Delete</a>
     </div>
     {% endfor %}
   </body>
